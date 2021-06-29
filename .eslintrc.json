@@ -30,6 +30,7 @@
 		"react/jsx-indent": "off",
         "no-tabs": "off",
 		"@typescript-eslint/semi": "off",
-		"react/button-has-type": "off"
+		"react/button-has-type": "off",
+		"no-trailing-spaces": "off"
     }
 }
