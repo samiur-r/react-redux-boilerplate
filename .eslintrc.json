@@ -23,6 +23,12 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "no-unused-vars": "warn"
+        "arrow-body-style": "off",
+        "react/prop-types": "off",
+        "indent": "off",
+		"@typescript-eslint/indent": "off",
+		"react/jsx-indent": "off",
+        "no-tabs": "off",
+		"@typescript-eslint/semi": "off"
     }
 }
