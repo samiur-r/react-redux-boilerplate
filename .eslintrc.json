@@ -29,6 +29,7 @@
 		"@typescript-eslint/indent": "off",
 		"react/jsx-indent": "off",
         "no-tabs": "off",
-		"@typescript-eslint/semi": "off"
+		"@typescript-eslint/semi": "off",
+		"react/button-has-type": "off"
     }
 }
