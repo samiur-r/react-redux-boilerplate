@@ -7,10 +7,12 @@ interface TemplateProps {
 
 const Template: React.FC<TemplateProps> = ({ propsOne, propsTwo }) => {
     const [count, setCount] = useState<number>(propsOne);
+
     const handleCount = () => {
         setCount((curr) => curr + 1)
 		propsTwo(["apples", "oranges"])
     }
+	
     return (
         <div>
             <button onClick={handleCount}>increment</button>
