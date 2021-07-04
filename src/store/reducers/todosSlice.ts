@@ -8,13 +8,13 @@ interface TodosType {
 interface TodosState {
 	todos: TodosType[],
 	isLoading: boolean,
-	error: string | undefined,
+	error: string | null,
 }
 
 const initialState: TodosState = {
   todos: [],
   isLoading: false,
-  error: undefined,
+  error: null,
 }
 
 export const todosSlice = createSlice({
