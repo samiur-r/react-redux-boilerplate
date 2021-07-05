@@ -23,11 +23,12 @@ export const todosSlice = createSlice({
   initialState,
   reducers: {
     getTodos: () => {},
+	addTodos: () => {},
+	updateTodo: () => {},
+	deleteTodo: () => {},
     setTodos: (state, { payload } : PayloadAction<TodosState>) => {
       return { ...state, todos: payload.todos }
     },
-	updateTodos: () => {},
-	deleteTodos: () => {},
 	setLoading: (state, { payload } : PayloadAction<TodosState>) => {
 		return { ...state, isLoading: payload.isLoading }
 	},
@@ -38,7 +39,7 @@ export const todosSlice = createSlice({
 })
 
 export const {
- getTodos, setTodos, updateTodos, deleteTodos, setLoading, setError,
+ getTodos, addTodos, updateTodo, deleteTodo, setTodos, setLoading, setError,
 } = todosSlice.actions
 
 export default todosSlice.reducer

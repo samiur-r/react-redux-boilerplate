@@ -24,11 +24,11 @@ export default class TodosApi {
 		});
 	}
 
-	static updateTodo(id:number, todo: TodosType): Promise<TodosType> {
+	static updateTodo({ id, todo } : { id:number, todo: TodosType }): Promise<TodosType> {
 		return new Promise<TodosType>((resolve, reject) => {
-		  api.put('/todos/'+id, todo)
-		  .then( res => resolve(res.data) )
-		  .catch( err => reject(err.message) )
+			api.put(`/todos/${id}`, todo)
+			.then((res) => resolve(res.data))
+			.catch((err) => reject(err.message))
 		});
 	}
 
