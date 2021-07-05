@@ -16,7 +16,7 @@ export function* fetchTodos() {
 
 export function* addTodo(todo) {
 	try {
-		const todos= yield call(TodosApi.addTodo, todo);
+		const todos = yield call(TodosApi.addTodo, todo);
 		yield put(setTodos(todos));
 	} catch (error) {
 		yield put(setError(error));
