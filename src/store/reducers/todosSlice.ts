@@ -10,12 +10,14 @@ interface TodosState {
 	todos: TodosType[],
 	isLoading: boolean,
 	error: string | null,
+	success: string | null,
 }
 
 const initialState: TodosState = {
   todos: [],
   isLoading: false,
   error: null,
+  success: null,
 }
 
 export const todosSlice = createSlice({
@@ -23,23 +25,26 @@ export const todosSlice = createSlice({
   initialState,
   reducers: {
     getTodos: () => {},
-	addTodos: () => {},
-	updateTodo: () => {},
-	deleteTodo: () => {},
-    setTodos: (state, { payload } : PayloadAction<TodosState>) => {
-      return { ...state, todos: payload.todos }
+	addTodos: (state, { payload } : PayloadAction<any>) => {},
+	updateTodo: (state, { payload } : PayloadAction<any>) => {},
+	deleteTodo: (state, { payload } : PayloadAction<any>) => {},
+    setTodos: (state, { payload } : PayloadAction<any>) => {
+      return { ...state, todos: payload }
     },
-	setLoading: (state, { payload } : PayloadAction<TodosState>) => {
-		return { ...state, isLoading: payload.isLoading }
+	setLoading: (state, { payload } : PayloadAction<any>) => {
+		return { ...state, isLoading: payload }
 	},
-	setError: (state, { payload } : PayloadAction<TodosState>) => {
-		return { ...state, error: payload.error }
+	setSuccess: (state, { payload } : PayloadAction<any>) => {
+		return { ...state, success: payload }
+	},
+	setError: (state, { payload } : PayloadAction<any>) => {
+		return { ...state, error: payload }
 	},
   },
 })
 
 export const {
- getTodos, addTodos, updateTodo, deleteTodo, setTodos, setLoading, setError,
+ getTodos, addTodos, updateTodo, deleteTodo, setTodos, setLoading, setError, setSuccess,
 } = todosSlice.actions
 
 export default todosSlice.reducer

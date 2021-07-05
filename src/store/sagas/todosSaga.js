@@ -2,42 +2,50 @@
  import { call, put, takeLatest, all, fork } from 'redux-saga/effects';
 import TodosApi from '../api/todosApi';
 import { 
-	getTodos, addTodos, updateTodo, deleteTodo, setTodos, setLoading, setError,
+	getTodos, addTodos, updateTodo, deleteTodo, setTodos, setLoading, setSuccess, setError, 
 } from '../reducers/todosSlice';
 
 export function* fetchTodos() {
   try {
+	yield put(setLoading(true))
     const todos = yield call(TodosApi.getTodos);
     yield put(setTodos(todos))
-  } catch (error) {
-    yield put(setError(error));
+	yield put(setLoading(false))
+  } catch (err) {
+      yield put(setError(err))
   }
 }
 
-export function* addTodo(todo) {
+export function* addTodo({ payload }) {
 	try {
-		const todos = yield call(TodosApi.addTodo, todo);
-		yield put(setTodos(todos));
-	} catch (error) {
-		yield put(setError(error));
+		yield put(setLoading(true))
+		yield call(TodosApi.addTodo, payload);
+		yield put(getTodos());
+		yield put(setSuccess('Success!'))
+	} catch (err) {
+		yield put(setError(err))
 	}
 } 
 
-export function* editTodo({ id, todo }) {
+export function* editTodo({ payload }) {
 	try {
-		const todos = yield call(TodosApi.updateTodo, { id, todo });
-		yield put(setTodos(todos));
-	} catch (error) {
-		yield put(setError(error));
+		yield put(setLoading(true))
+		yield call(TodosApi.updateTodo, payload);
+		yield put(getTodos());
+		yield put(setSuccess('Success!'))
+	} catch (err) {
+		yield put(setError(err))
 	}
 }
 
-export function* removeTodo(id) {
+export function* removeTodo({ payload }) {
 	try {
-		const todos = yield call(TodosApi.deleteTodo, id);
-		yield put(setTodos(todos));
-	} catch (error) {
-		yield put(setError(error));
+		yield put(setLoading(true))
+		yield call(TodosApi.deleteTodo, payload);
+		yield put(getTodos());
+		yield put(setSuccess('Success!'))
+	} catch (err) {
+		yield put(setError(err))
 	}
 }
 

@@ -7,20 +7,19 @@ interface TodosType {
 }
 
 export default class TodosApi {
-
 	static getTodos(): Promise<TodosType> {
-	  return new Promise<TodosType>((resolve, reject) => {
+		return new Promise<TodosType>((resolve, reject) => {
 		api.get('/todos')
-		.then( res => resolve(res.data) )
-		.catch( err => reject(err.message) )
-	  });
+		.then((res) => resolve(res.data))
+		.catch((err) => reject(err.message))
+		});
 	}
 
 	static addTodo(todo: TodosType): Promise<TodosType> {
 		return new Promise<TodosType>((resolve, reject) => {
-		  api.post('/todos', todo)
-		  .then( res => resolve(res.data) )
-		  .catch( err => reject(err.message) )
+			api.post('/todos', todo)
+			.then((res) => resolve(res.data))
+			.catch((err) => reject(err.message))
 		});
 	}
 
@@ -34,9 +33,9 @@ export default class TodosApi {
 
 	static deleteTodo(id:number): Promise<TodosType> {
 		return new Promise<TodosType>((resolve, reject) => {
-		  api.delete('/todos/'+id)
-		  .then( res => resolve(res.data) )
-		  .catch( err => reject(err.message) )
+			api.delete(`/todos/${id}`)
+			.then((res) => resolve(res.data))
+			.catch((err) => reject(err.message))
 		});
 	}
 }
